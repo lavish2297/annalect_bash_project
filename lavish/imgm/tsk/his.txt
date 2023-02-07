@@ -1,0 +1,10 @@
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+79433b94b218   1 second ago     bash                                            524MB     
+7a575797403f   41 seconds ago   bash                                            70.8MB    
+6b7dfa7e8fdb   7 weeks ago      /bin/sh -c #(nop)  CMD ["bash"]                 0B        
+<missing>      7 weeks ago      /bin/sh -c #(nop) ADD file:481dd2da6de715252…   77.8MB    
+IMAGE          CREATED                  CREATED BY                                      SIZE      COMMENT
+cd64de4cfa6f   Less than a second ago   bash                                            524MB     
+c62c1e627271   48 seconds ago           bash                                            96.5MB    
+6b7dfa7e8fdb   7 weeks ago              /bin/sh -c #(nop)  CMD ["bash"]                 0B        
+<missing>      7 weeks ago              /bin/sh -c #(nop) ADD file:481dd2da6de715252…   77.8MB    
