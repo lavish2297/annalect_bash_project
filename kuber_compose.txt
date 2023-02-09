@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: msql
+ labels:
+    app: mysql
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   app: mysql
+ template:
+   metadata:
+    labels:
+     app: mysql
+   spec:
+    containers:
+    - name: mysql
+      image: mysql:8.0.32
+      env:
+        - name: DEMO_GREETING
+          value: "hello"
+        - name: DEMO_FAREWELL
+          value: "such a sweet"
+      ports:
+      - containerPort: 6379
