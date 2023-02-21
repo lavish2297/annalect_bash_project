@@ -1,0 +1,7 @@
+module "mod_web_server_1" {
+  source = "/home/ec2-user/terra_module_uc/c_module/mod-1/"
+}
+
+module "mod_web_server_2" {
+  source = "/home/ec2-user/terra_module_uc/c_module/mod-2/"
+}

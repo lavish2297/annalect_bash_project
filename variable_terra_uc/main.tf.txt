@@ -1,0 +1,12 @@
+provider "aws" {
+        region  = "ap-northeast-1"
+}
+
+resource "aws_instance" "web" {
+        count           = var.number_of_instance
+        ami             = "ami-06ee4e2261a4dc5c3"
+        instance_type   = var.ec2_instance_type
+        tags            = {
+        Name            = var.ec2_instance_name
+ }
+}

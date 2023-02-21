@@ -1,0 +1,11 @@
+#!/bin/sh
+
+clear
+read -p "Enter the region name: " reg
+read -p "Enter the file name in which data will be saved: " file
+aws ec2 describe-instances --region $reg --query "Reservations[*].Instancee
+s[*].{Public_IP:PublicIpAddress,Instance_Name:Tags[*].Value|[0],Instance_II
+D:InstanceId,State:State.Name}" --output table >> $file
+aws ec2 describe-instances --region $reg --query "Reservations[*].Instancee
+s[*].{Public_IP:PublicIpAddress,Instance_Name:Tags[*].Value|[0],Instance_II
+D:InstanceId,State:State.Name}" --output table

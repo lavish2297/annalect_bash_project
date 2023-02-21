@@ -1,0 +1,47 @@
+resource "aws_instance" "web-1" {
+        ami                     = var.ami_id
+        instance_type           = var.web_instance_type
+        key_name                = "aws_key"
+        vpc_security_group_ids  = [aws_security_group.main.id]
+
+        user_data = <<-EOF
+        #/bin/sh!
+        sudo apt-get update
+        sudo apt- get install -y apache2
+        sudo systemctl status apache2
+        sudo systemctl start apache2
+        sudo chown -R $USER:$USER /var/www/html
+        sudo echo "<html><body><h1> HELLO THIS IS MODULE-2 AT instance id  
+"
+        EOF
+}
+resource "aws_security_group" "main" {
+        name = "EC2-webserver-SG-2"
+        description = "webserver for ec2 instance"
+
+        ingress {
+                from_port = 80
+                protocol = "TCP"
+                to_port = 80
+                cidr_blocks = ["0.0.0.0/0"]
+}
+        ingress {
+                from_port = 22
+                protocol = "TCP"
+                to_port = 22
+                cidr_blocks = ["0.0.0.0/0"]
+}
+        egress {
+                from_port = 0
+                protocol = "-1"
+                to_port = 0
+                cidr_blocks = ["0.0.0.0/0"]
+        }
+resource "aws_key_pair" "deployer" {
+        key_name = "aws_key1"
+        public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZbvYDZag31C3zz
+7PSuu3S08HHHfES1GESHWjnuF96xG0ZzuwBP4aovHmE0eUfipkfCX1VSnZSVJXUK0/ymjmuu811
+zcITXCXSgzQUFGS7iDSMjAS9Ij4NJYi2gDyC/bV+FoCqj7sp/Q63kFczBYvJOjtad/NYxDwf7aa
+TylQWItTmqu6NqcQF9S6kA0I1x1VqVnJPwouw+Oi5K1qycbg1xUL5cBZjA1A7DsirgJVlxCoCoo
+Wgh24evRMEQdVF1LC0DzW1ZuWX18vg41T+9qXjOSHkXbw48r5jBWQs2WPjeK5ojmvw3B5GWhD66
+H8edPipceAnmOBUKd9x+tKl6crsIosbn lavishkhatana@gmail.com"
